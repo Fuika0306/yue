@@ -1,0 +1,36 @@
+# Secrets and credentials
+secrets/
+.env
+.env.local
+*.key
+*.pem
+
+# Private data
+memory/archive/
+memory/embeddings/
+memory/index.lock
+
+# Node modules
+node_modules/
+package-lock.json
+
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
