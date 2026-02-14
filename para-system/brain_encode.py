@@ -70,7 +70,7 @@ def update_state(mem):
     else:
         mem["state"] = "Dust"
 
-def check_semantic_duplicate(content, memories, encoder, threshold=0.75):
+def check_semantic_duplicate(content, memories, encoder, threshold=0.82):
     """
     使用 MiniLM 檢查語義重複
     Returns:
@@ -130,8 +130,8 @@ def encode_memory(content, actor=None, target=None, domain="Role", importance=0.
                     similar_mem["last_access"] = datetime.datetime.now().isoformat()
                     similar_mem["access_count"] = similar_mem.get("access_count", 0) + 1
                     
-                    # 動態增加 density（刻骨銘心效果）
-                    similar_mem["density"] = round(similar_mem.get("density", 0) + 0.2, 2)
+                    # 動態增加 density（刻骨銘心效果，上限 5.0）
+                    similar_mem["density"] = round(min(5.0, similar_mem.get("density", 0) + 0.2), 2)
                     
                     # 重要性提升（每次強化 +15%，上限 2.0）
                     similar_mem["current_importance"] = min(
