@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-14T12:10:00Z",
+  "activeTask": null,
+  "taskContext": {
+    "description": "",
+    "requirements": [],
+    "constraints": [],
+    "deadline": null
+  },
+  "subagentStates": {
+    "空": {
+      "status": "idle",
+      "lastTask": null,
+      "findings": [],
+      "timestamp": null
+    },
+    "剀": {
+      "status": "idle",
+      "lastTask": null,
+      "output": null,
+      "timestamp": null
+    },
+    "衛": {
+      "status": "idle",
+      "lastTask": null,
+      "alerts": [],
+      "timestamp": null
+    }
+  },
+  "sharedFindings": [],
+  "blockers": [],
+  "nextSteps": []
+}
