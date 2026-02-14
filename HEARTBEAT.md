@@ -1,5 +1,17 @@
-# HEARTBEAT.md
+# HEARTBEAT.md - 定期检查清单
 
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
+## 每次心跳检查（1分钟间隔）
 
-# Add tasks below when you want the agent to check something periodically.
+### 系统健康检查
+- 检查三个孩子是否在线（🔍空、🛠️剀、👀玥）
+- 验证 cron 任务是否正常运行
+- 检查 MEMORY.md 是否需要更新
+
+### 主动发现
+- 扫描 memory/YYYY-MM-DD.md，发现待处理项
+- 检查是否有异常日志或错误
+- 评估系统是否需要优化
+
+### 状态汇报
+- 如果发现问题，立即上报
+- 如果系统正常，简短确认
