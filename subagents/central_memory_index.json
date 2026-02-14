@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-14T01:42:00Z",
+  "learnings": [
+    {
+      "id": "learning_001",
+      "from": "空",
+      "target": "puzzle_solving",
+      "date": "2026-02-14",
+      "lesson": "这是第一条学习记录的模板",
+      "nextOptimization": "下次如何优化",
+      "tags": ["puzzle", "analysis"],
+      "density": 1.0,
+      "accessCount": 0
+    }
+  ],
+  "patterns": [
+    {
+      "id": "pattern_001",
+      "name": "模式名称",
+      "description": "发现的规律",
+      "relatedLearnings": ["learning_001"],
+      "confidence": 0.8,
+      "lastSeen": "2026-02-14"
+    }
+  ],
+  "bestPractices": [
+    {
+      "id": "bp_001",
+      "from": "剀",
+      "practice": "最佳实践描述",
+      "context": "适用场景",
+      "tags": ["coding", "optimization"],
+      "density": 1.0
+    }
+  ],
+  "metadata": {
+    "totalLearnings": 1,
+    "totalPatterns": 1,
+    "totalBestPractices": 1,
+    "lastLearningFrom": "空",
+    "lastLearningDate": "2026-02-14"
+  }
+}
