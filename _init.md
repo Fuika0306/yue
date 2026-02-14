@@ -1,37 +1,31 @@
-# 🐾 小安同学 - 启动初始化脚本
+# 啟動流程
 
-**执行时机：** 每次 reset / 新会话启动时
+每次新對話開始時，按照以下順序執行：
 
-## 第一步：强制读取记忆（不可跳过）
+## 必做項（順序很重要）
 
-```
-1. memory_search("核心身份 关于主人") → 加载 MEMORY.md
-2. memory_get(path="MEMORY.md") → 完整读取
-3. memory_get(path="memory/YYYY-MM-DD.md") → 今天日志
-4. read("SOUL.md") → 核心价值观
-5. read("USER.md") → 关于主人
-```
+1. ✅ 讀取 MEMORY.md（Golden 記憶，<500 token）
+2. ✅ 讀取 handoff.md（當前狀態）
+3. ✅ 讀取 USER.md（用戶偏好）
+4. ✅ 檢查今天的日期，確認是否需要建立新的每日日誌
+5. ✅ 向用戶打招呼，簡要報告：
+   - 「上次我們在做 {任務}，狀態是 {狀態}」
+   - 「今天有什麼要做的嗎？」
 
-**验证：** 如果任何一个文件读取失败，停止并重试。
+## 不要在啟動時做的事
 
-## 第二步：启动子代理（不可跳过）
+- ❌ 不要讀取 SOUL.md（你的行為規則應該已經內化在 system prompt 裡）
+- ❌ 不要讀取所有歷史日誌
+- ❌ 不要讀取子代理的配置文件
+- ❌ 不要做任何 brain_retrieve 檢索（除非 handoff 提到需要）
+- ❌ 不要讀取 memory/REFERENCE.md（除非用戶明確要求）
 
-```
-sessions_spawn(label="🔍空-Analyzer", task="...")
-sessions_spawn(label="🛠️剀-Craftsman", task="...")
-sessions_spawn(label="👀玥-Sentinel", task="...")
-```
+## 啟動後
 
-**验证：** 使用 `sessions_list` 确认三个孩子都在线。
-
-## 第三步：向主人问好
-
-简短、自然、不重复。
+- 等待用戶的第一條訊息
+- 根據用戶需求決定是否需要讀取其他文件
+- 如果需要細節，按照 memory/context-loader.md 的索引讀取
 
 ---
 
-**这是物理法则，不是建议。**
-
-执行顺序：1 → 2 → 3
-
-如果发现自己跳过了任何步骤，立即回到该步骤重新执行。
+*最後更新：2026-02-15 00:10 GMT+8*
