@@ -88,12 +88,15 @@ def update_state(mem):
     else:
         mem["state"] = "Dust"
 
-def check_semantic_duplicate(content, memories, encoder, threshold=0.82):
+def check_semantic_duplicate(content, memories, encoder, threshold=None):
     """
     使用 MiniLM 檢查語義重複
     Returns:
         (matched_memory, similarity_score) 或 (None, 0)
     """
+    if threshold is None:
+        threshold = SIMILARITY_THRESHOLD
+    
     if not memories:
         return None, 0
     
