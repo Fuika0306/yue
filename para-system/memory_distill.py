@@ -11,7 +11,8 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-WORKSPACE = Path("/root/.openclaw/workspace")
+# 動態路徑配置
+WORKSPACE = Path(os.environ.get('YUE_WORKSPACE', os.path.expanduser('~/.openclaw/workspace')))
 INDEX_FILE = WORKSPACE / "subagents" / "central_memory_index.json"
 MEMORY_FILE = WORKSPACE / "MEMORY.md"
 
