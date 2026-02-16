@@ -1,0 +1,7 @@
+# 核心依賴
+sentence-transformers>=2.2.0  # MiniLM 語義模型
+numpy>=1.24.0                 # 向量運算
+torch>=2.0.0                  # PyTorch (sentence-transformers 依賴)
+
+# 可選依賴
+# transformers>=4.30.0        # 如需更多模型選擇

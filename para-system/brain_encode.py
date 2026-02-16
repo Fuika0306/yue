@@ -19,9 +19,10 @@ except ImportError:
     SEMANTIC_AVAILABLE = False
     print("Warning: semantic_encoder not available, falling back to difflib")
 
-# Constants
-MEMORY_DIR = os.path.join(os.path.expanduser("~"), ".openclaw/workspace/memory")
-INDEX_PATH = os.path.join(MEMORY_DIR, "index.json")
+# 動態路徑配置
+WORKSPACE = os.environ.get('YUE_WORKSPACE', os.path.expanduser('~/.openclaw/workspace'))
+MEMORY_DIR = os.path.join(WORKSPACE, 'memory')
+INDEX_PATH = os.path.join(MEMORY_DIR, 'index.json')
 
 def load_index():
     if os.path.exists(INDEX_PATH):

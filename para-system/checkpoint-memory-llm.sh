@@ -3,7 +3,7 @@
 # 频率: 每6小时
 # 输出: MEMORY.md
 
-WORKSPACE="/root/.openclaw/workspace"
+WORKSPACE="${YUE_WORKSPACE:-/root/.openclaw/workspace}"
 MEMORY_FILE="$WORKSPACE/MEMORY.md"
 DAILY_LOG_DIR="$WORKSPACE/memory"
 

@@ -6,7 +6,7 @@
 
 set -e
 
-WORKSPACE="/root/.openclaw/workspace"
+WORKSPACE="${YUE_WORKSPACE:-/root/.openclaw/workspace}"
 MEMORY_DIR="$WORKSPACE/memory"
 TODAY=$(date +%Y-%m-%d)
 SUMMARY_FILE="$MEMORY_DIR/$TODAY-summary.md"

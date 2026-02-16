@@ -3,7 +3,7 @@
 # 频率: 每周日 3:00
 # 输出: 综合分析报告
 
-WORKSPACE="/root/.openclaw/workspace"
+WORKSPACE="${YUE_WORKSPACE:-/root/.openclaw/workspace}"
 REPORT_FILE="$WORKSPACE/life/archives/nightly-analysis-report-$(date +%Y%m%d).md"
 MEMORY_FILE="$WORKSPACE/MEMORY.md"
 

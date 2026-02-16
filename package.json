@@ -1,6 +1,26 @@
 {
+  "name": "yue-ai-system",
+  "version": "2.1.0",
+  "description": "AI Assistant System with Memory, Subagents, and Architecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "node scripts/test-system.js",
+    "decay": "node scripts/memory-decay.js",
+    "prune": "node memory-prune.js"
+  },
   "dependencies": {
     "tweetnacl": "^1.0.3",
     "tweetnacl-util": "^0.15.1"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "keywords": [
+    "ai",
+    "assistant",
+    "memory",
+    "subagents"
+  ],
+  "author": "Yue",
+  "license": "MIT"
 }

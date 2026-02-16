@@ -1,40 +1,58 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - 環境配置
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## 系統環境
 
-## What Goes Here
+- **OS:** Linux (OpenCloudOS)
+- **Python:** 3.10+
+- **Node.js:** v22.22.0
+- **工作目錄:** ~/.openclaw/workspace
+- **時區:** GMT+8
 
-Things like:
+## 已安裝的工具
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+### Python 套件
 
-## Examples
+- sentence-transformers (MiniLM) - 語義編碼
+- numpy - 向量運算
+- torch - PyTorch
 
-```markdown
-### Cameras
+### Node.js 套件
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+- tweetnacl - 加密簽名
+- tweetnacl-util - 工具函數
 
-### SSH
+### 系統工具
 
-- home-server → 192.168.1.100, user: admin
+- git - 版本控制
+- cron - 定時任務
+- jq - JSON 處理
 
-### TTS
+## 環境變數
 
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
+```bash
+# 工作目錄配置（可選，默認 ~/.openclaw/workspace）
+export YUE_WORKSPACE="$HOME/.openclaw/workspace"
+
+# Python 依賴安裝
+pip3 install -r requirements.txt --break-system-packages
 ```
 
-## Why Separate?
+## 核心腳本位置
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+- **記憶編碼:** para-system/brain_encode.py
+- **記憶檢索:** para-system/brain_retrieve.py
+- **語義編碼:** para-system/semantic_encoder.py
+- **每日總結:** para-system/daily-summary.sh
+- **深度分析:** para-system/nightly-deep-analysis.sh
+- **檢查點:** para-system/checkpoint-memory-llm.sh
+
+## 記憶系統
+
+- **Golden 記憶:** MEMORY.md（永不衰減）
+- **Silver 記憶:** memory/YYYY-MM-DD.md（7天衰減）
+- **Bronze 記憶:** memory/handoff.md（快照）
+- **嵌入向量:** memory/embeddings/（MiniLM 編碼）
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+更新日期：2026-02-16 04:30 GMT+8

@@ -30,7 +30,8 @@ class SemanticEncoder:
         if not self.available:
             return
         
-        embedding_dir = Path.home() / ".openclaw/workspace/memory/embeddings"
+        workspace = os.environ.get('YUE_WORKSPACE', os.path.expanduser('~/.openclaw/workspace'))
+        embedding_dir = Path(workspace) / "memory/embeddings"
         embedding_dir.mkdir(parents=True, exist_ok=True)
         
         vec = self.encode(content)
@@ -40,7 +41,8 @@ class SemanticEncoder:
     def _get_memory_embedding(self, memory):
         """获取记忆的嵌入向量"""
         memory_id = memory.get("id")
-        embedding_path = Path.home() / ".openclaw/workspace/memory/embeddings" / f"mem_{memory_id}.npy"
+        workspace = os.environ.get('YUE_WORKSPACE', os.path.expanduser('~/.openclaw/workspace'))
+        embedding_path = Path(workspace) / "memory/embeddings" / f"mem_{memory_id}.npy"
         
         if embedding_path.exists():
             return np.load(embedding_path)
