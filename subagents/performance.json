@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "created": "2026-02-16",
+    "last_updated": "2026-02-16",
+    "version": "1.0"
+  },
+  "agents": {
+    "空": {
+      "name": "空（分析）",
+      "model": "claude-opus-4-6-thinking",
+      "total_tasks": 0,
+      "success": 0,
+      "failure": 0,
+      "success_rate": 0,
+      "avg_tokens": 0,
+      "total_tokens": 0,
+      "last_task": null,
+      "last_updated": "2026-02-16"
+    },
+    "剀": {
+      "name": "剀（工匠）",
+      "model": "claude-opus-4-5-20251101",
+      "total_tasks": 0,
+      "success": 0,
+      "failure": 0,
+      "success_rate": 0,
+      "avg_tokens": 0,
+      "total_tokens": 0,
+      "last_task": null,
+      "last_updated": "2026-02-16"
+    },
+    "衛": {
+      "name": "衛（監控）",
+      "model": "claude-haiku-4-5-20251001",
+      "total_tasks": 0,
+      "success": 0,
+      "failure": 0,
+      "success_rate": 0,
+      "avg_tokens": 0,
+      "total_tokens": 0,
+      "last_task": null,
+      "last_updated": "2026-02-16"
+    }
+  },
+  "history": []
+}
