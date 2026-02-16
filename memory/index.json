@@ -1,0 +1,21 @@
+{
+  "memories": [
+    {
+      "id": 1,
+      "content": "測試記憶：小安系統端到端驗證",
+      "actor": "User",
+      "target": "Core",
+      "domain": "Role",
+      "initial_importance": 0.7,
+      "current_importance": 0.7,
+      "s_factor": 0.995,
+      "density": 0.03,
+      "access_count": 0,
+      "retrieval_count": 0,
+      "last_access": "2026-02-17T00:05:21.710264",
+      "creation_date": "2026-02-17T00:05:21.710279",
+      "state": "Silver"
+    }
+  ],
+  "last_sync": "2026-02-17T00:05:21.710285"
+}

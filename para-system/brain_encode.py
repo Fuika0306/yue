@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-神髓記憶編碼器 v2.1 - 整合 MiniLM 語義查重與調用追蹤
+神髓記憶編碼器 v2.2 - 整合 MiniLM 語義查重與調用追蹤
+改進：使用統一配置、日誌系統、完整錯誤處理
 """
 
 import json
@@ -11,38 +12,54 @@ import sys
 import fcntl
 from pathlib import Path
 
+# 導入配置和日誌
+from config import Config
+from logger import get_logger
+
+logger = get_logger('brain_encode')
+
 # 導入語義編碼器
 try:
     from semantic_encoder import SemanticEncoder
     SEMANTIC_AVAILABLE = True
 except ImportError:
     SEMANTIC_AVAILABLE = False
-    print("Warning: semantic_encoder not available, falling back to difflib")
+    logger.warning("semantic_encoder not available, falling back to difflib")
 
-# 動態路徑配置
-WORKSPACE = os.environ.get('YUE_WORKSPACE', os.path.expanduser('~/.openclaw/workspace'))
-MEMORY_DIR = os.path.join(WORKSPACE, 'memory')
-INDEX_PATH = os.path.join(MEMORY_DIR, 'index.json')
+# 使用統一配置
+WORKSPACE = Config.WORKSPACE
+MEMORY_DIR = Config.MEMORY_DIR
+INDEX_PATH = Config.INDEX_PATH
+SIMILARITY_THRESHOLD = Config.SIMILARITY_THRESHOLD
 
 def load_index():
     if os.path.exists(INDEX_PATH):
         try:
             with open(INDEX_PATH, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            backup_path = INDEX_PATH + ".corrupt"
+                index = json.load(f)
+                logger.debug(f"Loaded index with {len(index.get('memories', []))} memories")
+                return index
+        except json.JSONDecodeError as e:
+            logger.error(f"Index file corrupted: {e}")
+            backup_path = str(INDEX_PATH) + ".corrupt"
             if os.path.exists(backup_path):
                 os.remove(backup_path)
             os.rename(INDEX_PATH, backup_path)
-            print(f"Error reading {INDEX_PATH}. Corrupt file moved to {backup_path}. Initializing new index.")
+            logger.warning(f"Corrupt file moved to {backup_path}. Initializing new index.")
     
-    os.makedirs(MEMORY_DIR, exist_ok=True)
+    MEMORY_DIR.mkdir(parents=True, exist_ok=True)
+    logger.info("Initialized new index")
     return {"memories": [], "last_sync": datetime.datetime.now().isoformat()}
 
 def save_index(data):
     data["last_sync"] = datetime.datetime.now().isoformat()
-    with open(INDEX_PATH, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    try:
+        with open(INDEX_PATH, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        logger.debug(f"Saved index with {len(data.get('memories', []))} memories")
+    except Exception as e:
+        logger.error(f"Failed to save index: {e}")
+        raise
 
 def get_s_factor(domain):
     factors = {
@@ -123,7 +140,7 @@ def encode_memory(content, actor=None, target=None, domain="Role", importance=0.
             # === 語義查重（MiniLM）===
             if encoder and SEMANTIC_AVAILABLE:
                 similar_mem, similarity = check_semantic_duplicate(
-                    content, index["memories"], encoder, threshold=0.75
+                    content, index["memories"], encoder, threshold=SIMILARITY_THRESHOLD
                 )
                 
                 if similar_mem and similarity >= 0.75:
