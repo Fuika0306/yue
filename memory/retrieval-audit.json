@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "created": "2026-02-16",
+    "purpose": "記錄向量檢索驗證結果，發現 embedding 模型的盲點"
+  },
+  "audits": [
+    {
+      "timestamp": "2026-02-16T00:00:00",
+      "query": "記憶系統",
+      "expected_keywords": ["衰減", "Silver", "Bronze"],
+      "system_results": [
+        {
+          "file": "memory/MEMORY.md",
+          "score": 0.92,
+          "relevant": true
+        }
+      ],
+      "manual_findings": [
+        {
+          "file": "memory/2026-02-15.md",
+          "reason": "包含記憶系統的詳細設計",
+          "missed": false
+        }
+      ],
+      "summary": "系統表現正常，未發現明顯漏掉的相關記憶"
+    }
+  ],
+  "statistics": {
+    "total_audits": 1,
+    "avg_precision": 1.0,
+    "avg_recall": 1.0,
+    "issues_found": 0
+  }
+}
