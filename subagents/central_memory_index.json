@@ -1,6 +1,12 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-02-14T01:42:00Z",
+  "lastUpdated": "2026-02-16T02:48:00Z",
+  "agents": {
+    "main": "玥 (Yue) - 主代理",
+    "analyzer": "🔍空 (Kong) - 分析子代理",
+    "craftsman": "🛠️剀 (Ke) - 工匠子代理",
+    "sentinel": "👀衛 (Wei) - 監控子代理"
+  },
   "learnings": [
     {
       "id": "learning_001",
@@ -39,6 +45,7 @@
     "totalPatterns": 1,
     "totalBestPractices": 1,
     "lastLearningFrom": "空",
-    "lastLearningDate": "2026-02-14"
+    "lastLearningDate": "2026-02-14",
+    "lastSync": "2026-02-16T02:48:00Z"
   }
 }
