@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-02-17T11:24:29.725697",
+    "task": "測試 API 調用",
+    "type": "API",
+    "reason": "api.example.com 返回 502",
+    "attempts": [
+      "重試 3 次",
+      "切換到備用 API"
+    ],
+    "solution": "使用鏈上直接查詢",
+    "resolved": false
+  }
+]
